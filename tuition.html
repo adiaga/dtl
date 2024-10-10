@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 2 Form Example</title>
+    <!-- Bootstrap 2 CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Tuition Form Example</h2>
+    <form class="form-horizontal" id="formTuition">
+        <div class="control-group">
+            <label class="control-label" for="inputApplicantInPrivateSchool-yes">Applicant in
+                Private School?</label>
+            <div class="controls">
+                <input type="radio" id="inputApplicantInPrivateSchool-yes" name="inputApplicantInPrivateSchool"
+                       value="Yes" checked="checked"/> Yes
+                <input type="radio" id="inputApplicantInPrivateSchool-no" name="inputApplicantInPrivateSchool"
+                       value="No"/> No
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputApplicantInJDS-yes">Applicant in JDS?</label>
+            <div class="controls">
+                <input type="radio" id="inputApplicantInJDS-yes" name="inputApplicantInJDS" value="Yes"/> Yes
+                <input type="radio" id="inputApplicantInJDS-no" name="inputApplicantInJDS" value="No"
+                       checked="checked"/> No
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputApplicantInPublicSchool-yes">Applicant in Public School?</label>
+            <div class="controls">
+                <input type="radio" id="inputApplicantInPublicSchool-yes" name="inputApplicantInPublicSchool"
+                       value="Yes" checked="checked"/> Yes
+                <input type="radio" id="inputApplicantInPublicSchool-no" name="inputApplicantInPublicSchool"
+                       value="No"/> No
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputTotalSchoolAgedKids">Total School Aged Kids</label>
+            <div class="controls">
+                <select id="inputTotalSchoolAgedKids" required>
+                    <option value="">Select Number</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputAGI">AGI</label>
+            <div class="controls">
+                <input type="number" id="inputAGI" value="" required/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="inputAssets">Assets</label>
+            <div class="controls">
+                <input type="number" id="inputAssets" value="" required/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="checkbox">
+                    <input type="checkbox"> Agree to terms
+                </label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="result" style="display: none">
+    <h1 class="center text-center"></h1>
+</div>
+
+<!-- Bootstrap 2 JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $('#formTuition').on('submit', function (e) {
+            e.preventDefault();
+
+            var AGI = [
+                24999,
+                25000,
+                100000,
+                150000,
+                200000,
+                350000,
+                500000
+            ];
+
+            var Assets = [
+                499999,
+                499999,
+                999999,
+                1249999,
+                1499999,
+                1999999,
+                2499999,
+                4999999,
+                10000000
+            ];
+
+            var A3 = $('[name="inputApplicantInPrivateSchool"]:checked').val();
+            var B3 = $('[name="inputApplicantInJDS"]:checked').val();
+            var C3 = $('[name="inputApplicantInPublicSchool"]:checked').val();
+            var D3 = $('#inputTotalSchoolAgedKids').val();
+            var E3 = $('#inputAGI').val();
+            var F3 = $('#inputAssets').val();
+
+            //=IFS(E3>$AB$9, "25%", E3>$AB$8, "15%", E3>$AB$7, "15%", E3>$AB$6, "12%" , E3>0, "10%")
+            var G3 = 0;
+            if (E3 > AGI[6]) {
+                G3 = 25;
+            } else if (E3 > AGI[5]) {
+                G3 = 15;
+            } else if (E3 > AGI[4]) {
+                G3 = 15;
+            } else if (E3 > AGI[3]) {
+                G3 = 12;
+            } else {
+                G3 = 10;
+            }
+
+            G3 = G3 / 100;
+
+            //=IFS(F3>$X$11, "30%", F3>$X$10, "20%", F3>$X$9, "15%", F3>$X$8, "10%", F3>$X$7, "5%", F3>$X$6, "4%", F3>$X$5, "3%", F3>$X$4, "2%", F3>0, "0%")
+            var H3 = 0;
+            if (F3 > Assets[8]) {
+                H3 = 30;
+            } else if (F3 > Assets[7]) {
+                H3 = 20;
+            } else if (F3 > Assets[6]) {
+                H3 = 15;
+            } else if (F3 > Assets[5]) {
+                H3 = 10;
+            } else if (F3 > Assets[4]) {
+                H3 = 5;
+            } else if (F3 > Assets[3]) {
+                H3 = 4;
+            } else if (F3 > Assets[2]) {
+                H3 = 3;
+            } else if (F3 > Assets[1]) {
+                H3 = 2;
+            } else {
+                H3 = 0;
+            }
+
+            H3 = H3 / 100;
+
+            //=SUM(E3*G3)+(F3*H3)
+            var I3 = E3 * G3 + F3 * H3;
+
+            var J3 = I3 / D3;
+
+            var result = "";
+
+            console.log(C3);
+            console.log(J3);
+
+            var resultMap = {
+                "r1": {
+                    'estimated_tuition': '~$21,800',
+                    'estimated_award': '$30,000+',
+                    'current_families': '15',
+                    'with_payment_plan': '~$1,400 per month'
+                },
+                "r2": {
+                    'estimated_tuition': '$16,800 - 21,800',
+                    'estimated_award': '$20,000 - 25,000',
+                    'current_families': '18',
+                    'with_payment_plan': '$1,400 - $1,816 per month'
+                },
+                "r3": {
+                    'estimated_tuition': '$21,800 - 26,800',
+                    'estimated_award': '$20,000 - 25,000',
+                    'current_families': '18',
+                    'with_payment_plan': '$1,816 - $2,233 per month'
+                },
+                "r4": {
+                    'estimated_tuition': '$26,800 - 36,800',
+                    'estimated_award': '$10,000 - 20,000',
+                    'current_families': '51',
+                    'with_payment_plan': '$2,233 - $3,066 per month'
+                },
+                "r5": {
+                    'estimated_tuition': '$36,800 - 41,800',
+                    'estimated_award': '$5,000 - 10,000',
+                    'current_families': '30',
+                    'with_payment_plan': '$3,066 - $3,483 per month'
+                },
+                "r6": {
+                    'estimated_tuition': '$41,800 - 44,300',
+                    'estimated_award': '$2,500 - 5,000',
+                    'current_families': '12',
+                    'with_payment_plan': '$3,483 - $3,961 per month'
+                },
+                "r7": {
+                    'estimated_tuition': '$44,300 - 46,800',
+                    'estimated_award': '$0 - 2,500',
+                    'current_families': '1',
+                    'with_payment_plan': '$3,961 - $4,680 per month'
+                },
+            };
+
+            if (C3 === 'Yes') {
+                if (J3 > 45999) {
+                    result = "r6";
+                } else if (J3 > 32999) {
+                    result = "r5";
+                } else if (J3 > 21999) {
+                    result = "r4";
+                } else if (J3 > 15749) {
+                    result = "r3";
+                } else if (J3 > 9499) {
+                    result = "r2";
+                } else {
+                    result = "r1";
+                }
+                // IFS(J3>45999, "$41,800 - 44,300", J3>32999, "$36,800 - 41,800", J3>21999, "$26,800 - 36,800",
+                // J3>15749, "$21,800 - 26,800", J3>9499, "$16,800 - 21,800", J3>0, "~$21,800")
+            }
+            if (C3 === 'No') {
+                if (J3 > 45999) {
+                    result = "r7";
+                } else if (J3 > 32999) {
+                    result = "r6";
+                } else if (J3 > 21999) {
+                    result = "r5";
+                } else if (J3 > 15749) {
+                    result = "r4";
+                } else if (J3 > 9499) {
+                    result = "r3";
+                } else {
+                    result = "r2";
+                }
+                // IFS(J3>45999, "$44,300 - 46,800", J3>32999, "$41,800 - 44,300", J3>21999, "$36,800 - 41,800",
+                // J3>15749, "$26,800 - 36,800", J3>9499, "$21,800 - 26,800", J3>0, "$16,800 - 21,800")
+            }
+
+            $('#result h1').html('Estimated award: ' + resultMap[result].estimated_award);
+            $('#result').show();
+
+        })
+    })
+</script>
+</body>
+</html>
