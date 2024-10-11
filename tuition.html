@@ -6,6 +6,33 @@
     <title>Tuition Form Example</title>
     <!-- Bootstrap 2 CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #result {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .result_inner {
+            width: 800px;
+            height: 600px;
+            overflow-y: scroll;
+            position: fixed;
+            top: 50%;
+            margin-top: -300px;
+            left: 50%;
+            margin-left: -400px;
+            background-color: #fff;
+            padding: 20px;
+            display: flex;
+            align-content: flex-start;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -112,18 +139,26 @@
 </div>
 
 <div id="result" style="display: none">
-    <p>Based on the information that you have provided, here are the estimations for your tuition assistance award and cost per child enrolled.</p>
-    <p>
-        Yes, you can afford de Toledo High School!  Your child will never feel as connected to school as they will when enrolled at de Toledo High School.  Start the process of joining our community by submitting a Tuition Assistance Application through FAST.
-    </p>
-    <p>
-        Access the FAST APPLICATION <a href="https://apply.ismfast.com/">here</a>
-    </p>
-    <p>
-        Email <a href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment Management, with any questions.
-    </p>
-    <h1 class="center text-center"></h1>
-
+    <div class="result_inner">
+        <p>Based on the information that you have provided, here are the estimations for your tuition assistance award
+            and
+            cost per child enrolled.</p>
+        <p>
+            Yes, you can afford de Toledo High School! Your child will never feel as connected to school as they will
+            when
+            enrolled at de Toledo High School. Start the process of joining our community by submitting a Tuition
+            Assistance
+            Application through FAST.
+        </p>
+        <p>
+            Access the FAST APPLICATION <a href="https://apply.ismfast.com/">here</a>
+        </p>
+        <p>
+            Email <a href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment Management, with any
+            questions.
+        </p>
+        <h2 class="center text-center"></h2>
+    </div>
 </div>
 
 <!-- Bootstrap 2 JS -->
@@ -293,7 +328,7 @@
                 // J3>15749, "$26,800 - 36,800", J3>9499, "$21,800 - 26,800", J3>0, "$16,800 - 21,800")
             }
 
-            $('#result h1').html(
+            $('#result h2').html(
                 'We currently have # families with this profile: ' + resultMap[result].current_families + '<br />' +
                 'Tuition Assistance Award Range: ' + resultMap[result].estimated_tuition + '<br />' +
                 'Estimated Tuition (based on 2024-2025): ' + resultMap[result].estimated_award + '<br />' +
