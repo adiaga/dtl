@@ -11,9 +11,17 @@
 <div class="container">
     <h2 class="text-center">Tuition Form Example</h2>
     <form class="form-horizontal" id="formTuition">
+        <p>
+
+            In order to facilitate transparency between dTHS and prospective families, we have created a tuition
+            assistance award estimator to give a sense of what their award may be per student.</p>
+        <p>While a final determination can only be made after a review of your completed Tuition Assistance application
+            with tax returns, this tool will help to provide an estimate based solely on the parameters shared with us
+            below.
+        </p>
         <div class="control-group">
-            <label class="control-label" for="inputApplicantInPrivateSchool-yes">Applicant in
-                Private School?</label>
+            <label class="control-label" for="inputApplicantInPrivateSchool-yes">Is the applicant current enrolled in a
+                private school?</label>
             <div class="controls">
                 <input type="radio" id="inputApplicantInPrivateSchool-yes" name="inputApplicantInPrivateSchool"
                        value="Yes" checked="checked"/> Yes
@@ -23,7 +31,8 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputApplicantInJDS-yes">Applicant in JDS?</label>
+            <label class="control-label" for="inputApplicantInJDS-yes">Is the applicant current enrolled in a Jewish Day
+                School?</label>
             <div class="controls">
                 <input type="radio" id="inputApplicantInJDS-yes" name="inputApplicantInJDS" value="Yes"/> Yes
                 <input type="radio" id="inputApplicantInJDS-no" name="inputApplicantInJDS" value="No"
@@ -32,7 +41,8 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputApplicantInPublicSchool-yes">Applicant in Public School?</label>
+            <label class="control-label" for="inputApplicantInPublicSchool-yes">Is the applicant current enrolled in a
+                public school?</label>
             <div class="controls">
                 <input type="radio" id="inputApplicantInPublicSchool-yes" name="inputApplicantInPublicSchool"
                        value="Yes" checked="checked"/> Yes
@@ -42,7 +52,8 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputTotalSchoolAgedKids">Total School Aged Kids</label>
+            <label class="control-label" for="inputTotalSchoolAgedKids">Number of children living at home for whom you
+                will pay a tuition next fall (including the applicant), first grade through twelfth grade:</label>
             <div class="controls">
                 <select id="inputTotalSchoolAgedKids" required>
                     <option value="">Select Number</option>
@@ -60,14 +71,15 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputAGI">AGI</label>
+            <label class="control-label" for="inputAGI">Annual Gross Income (Line 11 on Form 1040 tax return):</label>
             <div class="controls">
                 <input type="number" id="inputAGI" value="" required/>
             </div>
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputAssets">Assets</label>
+            <label class="control-label" for="inputAssets">Value of Family Liquid Assets (Total of cash, checking,
+                savings, brokerage, 529 and retirement accounts):</label>
             <div class="controls">
                 <input type="number" id="inputAssets" value="" required/>
             </div>
@@ -75,8 +87,18 @@
 
         <div class="control-group">
             <div class="controls">
+                <h3>Disclaimer</h3>
+                <p>
+                    The Tuition Assistance Award range estimated on the following screen is based on the basic
+                    parameters you’ve provided.</p>
+                <p>A more thorough review and final determination will be made based on your completed Tuition
+                    Assistance application with tax returns.</p>
+                <p>
+                    This estimator is meant only to give you a rough sense of what your Tuition Assistance award may be
+                    per student.
+                </p>
                 <label class="checkbox">
-                    <input type="checkbox"> Agree to terms
+                    <input type="checkbox" required> I Agree
                 </label>
             </div>
         </div>
