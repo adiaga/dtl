@@ -361,6 +361,9 @@
         })
         $('#result').on('click', function (e) {
             e.preventDefault();
+            if ($(e.target).attr('id') !== 'result') {
+                return;
+            }
             $('#result').hide();
         })
     })
