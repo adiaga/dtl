@@ -36,6 +36,16 @@
 
         h2 {
             font-size: 24px;
+            width: 100%;
+        }
+        .close {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            color: #000;
+            background-color: #fff;
+            font-size: 30px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -144,7 +154,9 @@
 </div>
 
 <div id="result" style="display: none">
+
     <div class="result_inner">
+        <div class="close">x</div>
         <p>Based on the information that you have provided, here are the estimations for your tuition assistance award
             and
             cost per child enrolled.</p>
@@ -341,6 +353,15 @@
             );
             $('#result').show();
 
+        })
+
+        $('.close').on('click', function (e) {
+            e.preventDefault();
+            $('#result').hide();
+        })
+        $('#result').on('click', function (e) {
+            e.preventDefault();
+            $('#result').hide();
         })
     })
 </script>
