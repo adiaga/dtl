@@ -112,7 +112,18 @@
 </div>
 
 <div id="result" style="display: none">
+    <p>Based on the information that you have provided, here are the estimations for your tuition assistance award and cost per child enrolled.</p>
+    <p>
+        Yes, you can afford de Toledo High School!  Your child will never feel as connected to school as they will when enrolled at de Toledo High School.  Start the process of joining our community by submitting a Tuition Assistance Application through FAST.
+    </p>
+    <p>
+        Access the FAST APPLICATION <a href="https://apply.ismfast.com/">here</a>
+    </p>
+    <p>
+        Email <a href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment Management, with any questions.
+    </p>
     <h1 class="center text-center"></h1>
+
 </div>
 
 <!-- Bootstrap 2 JS -->
@@ -282,7 +293,12 @@
                 // J3>15749, "$26,800 - 36,800", J3>9499, "$21,800 - 26,800", J3>0, "$16,800 - 21,800")
             }
 
-            $('#result h1').html('Estimated award: ' + resultMap[result].estimated_award);
+            $('#result h1').html(
+                'We currently have # families with this profile: ' + resultMap[result].current_families + '<br />' +
+                'Tuition Assistance Award Range: ' + resultMap[result].estimated_tuition + '<br />' +
+                'Estimated Tuition (based on 2024-2025): ' + resultMap[result].estimated_award + '<br />' +
+                'And with a payment plan of: ' + resultMap[result].with_payment_plan + '<br />'
+            );
             $('#result').show();
 
         })
