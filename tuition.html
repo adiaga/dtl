@@ -38,6 +38,7 @@
             font-size: 24px;
             width: 100%;
         }
+
         .close {
             position: absolute;
             top: 0;
@@ -53,103 +54,123 @@
 <div class="container">
     <h2 class="text-center">Tuition Form Example</h2>
     <form class="form-horizontal" id="formTuition">
-        <p>
 
-            In order to facilitate transparency between dTHS and prospective families, we have created a tuition
-            assistance award estimator to give a sense of what their award may be per student.</p>
-        <p>While a final determination can only be made after a review of your completed Tuition Assistance application
-            with tax returns, this tool will help to provide an estimate based solely on the parameters shared with us
-            below.
-        </p>
-        <div class="control-group">
-            <label class="control-label" for="inputApplicantInPrivateSchool-yes">Is the applicant current enrolled in a
-                private school?</label>
-            <div class="controls">
-                <input type="radio" id="inputApplicantInPrivateSchool-yes" name="inputApplicantInPrivateSchool"
-                       value="Yes" checked="checked"/> Yes
-                <input type="radio" id="inputApplicantInPrivateSchool-no" name="inputApplicantInPrivateSchool"
-                       value="No"/> No
+        <div id="part_1">
+            <p>
+
+                In order to facilitate transparency between dTHS and prospective families, we have created a tuition
+                assistance award estimator to give a sense of what their award may be per student.</p>
+            <p>While a final determination can only be made after a review of your completed Tuition Assistance
+                application
+                with tax returns, this tool will help to provide an estimate based solely on the parameters shared with
+                us
+                below.
+            </p>
+            <div class="control-group">
+                <label class="control-label" for="inputApplicantInPrivateSchool-yes">Is the applicant currently enrolled
+                    in a
+                    private school?</label>
+                <div class="controls">
+                    <input type="radio" id="inputApplicantInPrivateSchool-yes" name="inputApplicantInPrivateSchool"
+                           value="Yes" checked="checked"/> Yes
+                    <input type="radio" id="inputApplicantInPrivateSchool-no" name="inputApplicantInPrivateSchool"
+                           value="No"/> No
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputApplicantInJDS-yes">Is the applicant currently enrolled in a
+                    Jewish Day
+                    School?</label>
+                <div class="controls">
+                    <input type="radio" id="inputApplicantInJDS-yes" name="inputApplicantInJDS" value="Yes"/> Yes
+                    <input type="radio" id="inputApplicantInJDS-no" name="inputApplicantInJDS" value="No"
+                           checked="checked"/> No
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputApplicantInPublicSchool-yes">Is the applicant currently enrolled
+                    in a
+                    public school?</label>
+                <div class="controls">
+                    <input type="radio" id="inputApplicantInPublicSchool-yes" name="inputApplicantInPublicSchool"
+                           value="Yes" checked="checked"/> Yes
+                    <input type="radio" id="inputApplicantInPublicSchool-no" name="inputApplicantInPublicSchool"
+                           value="No"/> No
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputTotalSchoolAgedKids">Number of children living at home for whom
+                    you
+                    will pay a tuition next fall (including the applicant), first grade through twelfth grade:</label>
+                <div class="controls">
+                    <select id="inputTotalSchoolAgedKids" required>
+                        <option value="">Select Number</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputAGI">Annual Gross Income (Line 11 on Form 1040 tax
+                    return):</label>
+                <div class="controls">
+                    <input type="number" id="inputAGI" value="" required/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputAssets">Value of Family Liquid Assets (Total of cash, checking,
+                    savings, brokerage, 529 and retirement accounts):</label>
+                <div class="controls">
+                    <input type="number" id="inputAssets" value="" required/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <button type="button" class="btn btn-primary" id="btn_1">Estimate</button>
+                </div>
             </div>
         </div>
 
-        <div class="control-group">
-            <label class="control-label" for="inputApplicantInJDS-yes">Is the applicant current enrolled in a Jewish Day
-                School?</label>
-            <div class="controls">
-                <input type="radio" id="inputApplicantInJDS-yes" name="inputApplicantInJDS" value="Yes"/> Yes
-                <input type="radio" id="inputApplicantInJDS-no" name="inputApplicantInJDS" value="No"
-                       checked="checked"/> No
+        <div id="part_2" style="display: none">
+            <div class="control-group">
+                <div class="controls">
+                    <h3>Disclaimer</h3>
+                    <p>
+                        The Tuition Assistance Award range estimated on the following screen is based on the basic
+                        parameters you’ve provided.</p>
+                    <p>A more thorough review and final determination will be made based on your completed Tuition
+                        Assistance application with tax returns.</p>
+                    <p>
+                        This estimator is meant only to give you a rough sense of what your Tuition Assistance award may
+                        be
+                        per student.
+                    </p>
+                    <!--<label class="checkbox">
+                        <input type="checkbox" required> I Agree
+                    </label>-->
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">I Agree</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="control-group">
-            <label class="control-label" for="inputApplicantInPublicSchool-yes">Is the applicant current enrolled in a
-                public school?</label>
-            <div class="controls">
-                <input type="radio" id="inputApplicantInPublicSchool-yes" name="inputApplicantInPublicSchool"
-                       value="Yes" checked="checked"/> Yes
-                <input type="radio" id="inputApplicantInPublicSchool-no" name="inputApplicantInPublicSchool"
-                       value="No"/> No
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="inputTotalSchoolAgedKids">Number of children living at home for whom you
-                will pay a tuition next fall (including the applicant), first grade through twelfth grade:</label>
-            <div class="controls">
-                <select id="inputTotalSchoolAgedKids" required>
-                    <option value="">Select Number</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="inputAGI">Annual Gross Income (Line 11 on Form 1040 tax return):</label>
-            <div class="controls">
-                <input type="number" id="inputAGI" value="" required/>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="inputAssets">Value of Family Liquid Assets (Total of cash, checking,
-                savings, brokerage, 529 and retirement accounts):</label>
-            <div class="controls">
-                <input type="number" id="inputAssets" value="" required/>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <h3>Disclaimer</h3>
-                <p>
-                    The Tuition Assistance Award range estimated on the following screen is based on the basic
-                    parameters you’ve provided.</p>
-                <p>A more thorough review and final determination will be made based on your completed Tuition
-                    Assistance application with tax returns.</p>
-                <p>
-                    This estimator is meant only to give you a rough sense of what your Tuition Assistance award may be
-                    per student.
-                </p>
-                <label class="checkbox">
-                    <input type="checkbox" required> I Agree
-                </label>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
     </form>
 </div>
 
@@ -168,10 +189,11 @@
             Application through FAST.
         </p>
         <p>
-            Access the FAST APPLICATION <a href="https://apply.ismfast.com/">here</a>
+            Access the FAST APPLICATION <a target="_blank" href="https://apply.ismfast.com/">here</a>
         </p>
         <p>
-            Email <a href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment Management, with any
+            Email <a target="_blank" href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment
+            Management, with any
             questions.
         </p>
         <h2 class="center text-center"></h2>
@@ -183,6 +205,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script>
     jQuery(document).ready(function ($) {
+        $('#btn_1').on('click', function (e) {
+            e.preventDefault();
+            $('#part_1').hide();
+            $('#part_2').show();
+        });
         $('#formTuition').on('submit', function (e) {
             e.preventDefault();
 
@@ -347,8 +374,8 @@
 
             $('#result h2').html(
                 'We currently have ' + resultMap[result].current_families + ' families with this profile' + '<br /><br />' +
-                'Tuition Assistance Award Range: ' + resultMap[result].estimated_tuition + '<br /><br />' +
-                'Estimated Tuition (based on 2024-2025): ' + resultMap[result].estimated_award + '<br />' +
+                'Tuition Assistance Award Range: ' + resultMap[result].estimated_award + '<br /><br />' +
+                'Estimated Tuition: ' + resultMap[result].estimated_tuition + '<br />' +
                 'And with a payment plan of: ' + resultMap[result].with_payment_plan + '<br />'
             );
             $('#result').show();
