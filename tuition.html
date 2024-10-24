@@ -192,7 +192,7 @@
             Access the FAST APPLICATION <a target="_blank" href="https://apply.ismfast.com/">here</a>
         </p>
         <p>
-            Email <a target="_blank" href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment
+            Email <a href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment
             Management, with any
             questions.
         </p>
@@ -387,10 +387,11 @@
             $('#result').hide();
         })
         $('#result').on('click', function (e) {
-            e.preventDefault();
-            if ($(e.target).attr('id') !== 'result') {
+
+            if ($(e.target).attr('id') !== 'result' || e.target.tagName.toLowerCase() === 'a') {
                 return;
             }
+            e.preventDefault();
             $('#result').hide();
         })
     })
