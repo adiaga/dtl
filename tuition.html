@@ -35,6 +35,7 @@
         }
 
         h2 {
+            color: #97233F;
             font-size: 24px;
             width: 100%;
         }
@@ -48,6 +49,30 @@
             font-size: 30px;
             cursor: pointer;
         }
+
+        .btn.btn-primary {
+            background-color: #97233F !important;
+            background-image: none;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: center;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            line-height: 1em;
+        }
+
+        .controls label {
+            margin-bottom: 0;
+        }
+
+        .controls input {
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -58,8 +83,8 @@
         <div id="part_1">
             <p>
 
-                In order to facilitate transparency between dTHS and prospective families, we have created a tuition
-                assistance award estimator to give a sense of what their award may be per student.</p>
+                We have created a tuition assistance award estimator to help you understand what your award may be for
+                your student.</p>
             <p>While a final determination can only be made after a review of your completed Tuition Assistance
                 application
                 with tax returns, this tool will help to provide an estimate based solely on the parameters shared with
@@ -67,39 +92,22 @@
                 below.
             </p>
             <div class="control-group">
-                <label class="control-label" for="inputApplicantInPrivateSchool-yes">Is the applicant currently enrolled
-                    in a
-                    private school?</label>
+                <label class="control-label">Is your student applicant currently enrolled in</label>
                 <div class="controls">
-                    <input type="radio" id="inputApplicantInPrivateSchool-yes" name="inputApplicantInPrivateSchool"
-                           value="Yes" checked="checked"/> Yes
-                    <input type="radio" id="inputApplicantInPrivateSchool-no" name="inputApplicantInPrivateSchool"
-                           value="No"/> No
+                    <input type="radio" id="inputApplicantEnrolled-NonJewishPrivateSchool" name="inputApplicantEnrolled"
+                           value="Non - Jewish Private School" checked="checked"/> <label
+                        for="inputApplicantEnrolled-NonJewishPrivateSchool" style="display: inline">Non - Jewish Private
+                    School</label>
+                    <input type="radio" id="inputApplicantEnrolled-JewishDaySchool" name="inputApplicantEnrolled"
+                           value="Jewish Day School" checked="checked"/> <label
+                        for="inputApplicantEnrolled-JewishDaySchool" style="display: inline">Jewish Day School</label>
+                    <input type="radio" id="inputApplicantEnrolled-PublicSchool" name="inputApplicantEnrolled"
+                           value="Public School" checked="checked"/> <label for="inputApplicantEnrolled-PublicSchool"
+                                                                            style="display: inline">Public
+                    School</label>
                 </div>
             </div>
 
-            <div class="control-group">
-                <label class="control-label" for="inputApplicantInJDS-yes">Is the applicant currently enrolled in a
-                    Jewish Day
-                    School?</label>
-                <div class="controls">
-                    <input type="radio" id="inputApplicantInJDS-yes" name="inputApplicantInJDS" value="Yes"/> Yes
-                    <input type="radio" id="inputApplicantInJDS-no" name="inputApplicantInJDS" value="No"
-                           checked="checked"/> No
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label" for="inputApplicantInPublicSchool-yes">Is the applicant currently enrolled
-                    in a
-                    public school?</label>
-                <div class="controls">
-                    <input type="radio" id="inputApplicantInPublicSchool-yes" name="inputApplicantInPublicSchool"
-                           value="Yes" checked="checked"/> Yes
-                    <input type="radio" id="inputApplicantInPublicSchool-no" name="inputApplicantInPublicSchool"
-                           value="No"/> No
-                </div>
-            </div>
 
             <div class="control-group">
                 <label class="control-label" for="inputTotalSchoolAgedKids">Number of children living at home for whom
@@ -174,31 +182,6 @@
     </form>
 </div>
 
-<div id="result" style="display: none">
-
-    <div class="result_inner">
-        <div class="close">x</div>
-        <p>Based on the information that you have provided, here are the estimations for your tuition assistance award
-            and
-            cost per child enrolled.</p>
-        <p>
-            Yes, you can afford de Toledo High School! Your child will never feel as connected to school as they will
-            when
-            enrolled at de Toledo High School. Start the process of joining our community by submitting a Tuition
-            Assistance
-            Application through FAST.
-        </p>
-        <p>
-            Access the FAST APPLICATION <a target="_blank" href="https://apply.ismfast.com/">here</a>
-        </p>
-        <p>
-            Email <a href="mailto:dabelson@dths.org">Debbie Abelson</a>, Director of Enrollment
-            Management, with any
-            questions.
-        </p>
-        <h2 class="center text-center"></h2>
-    </div>
-</div>
 
 <!-- Bootstrap 2 JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -235,9 +218,9 @@
                 10000000
             ];
 
-            var A3 = $('[name="inputApplicantInPrivateSchool"]:checked').val();
-            var B3 = $('[name="inputApplicantInJDS"]:checked').val();
-            var C3 = $('[name="inputApplicantInPublicSchool"]:checked').val();
+            var A3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Non - Jewish Private School';
+            var B3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Jewish Private School';
+            var C3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Public School';
             var D3 = $('#inputTotalSchoolAgedKids').val();
             var E3 = $('#inputAGI').val();
             var F3 = $('#inputAssets').val();
@@ -372,13 +355,15 @@
                 // J3>15749, "$26,800 - 36,800", J3>9499, "$21,800 - 26,800", J3>0, "$16,800 - 21,800")
             }
 
-            $('#result h2').html(
-                'We currently have ' + resultMap[result].current_families + ' families with this profile' + '<br /><br />' +
+            window.localStorage.setItem('result', 'We currently have ' + resultMap[result].current_families + ' families with this profile' + '<br /><br />' +
                 'Tuition Assistance Award Range: ' + resultMap[result].estimated_award + '<br /><br />' +
                 'Estimated Tuition: ' + resultMap[result].estimated_tuition + '<br />' +
-                'And with a payment plan of: ' + resultMap[result].with_payment_plan + '<br />'
+                'And with a payment plan of: ' + resultMap[result].with_payment_plan + '<br />');
+            window.location.href = '/result.html';
+            /*$('#result p.result').html(
+
             );
-            $('#result').show();
+            $('#result').show();*/
 
         })
 
