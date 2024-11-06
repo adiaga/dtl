@@ -355,7 +355,9 @@
                 // J3>15749, "$26,800 - 36,800", J3>9499, "$21,800 - 26,800", J3>0, "$16,800 - 21,800")
             }
 
-            window.localStorage.setItem('result', 'We currently have ' + resultMap[result].current_families + ' families with this profile' + '<br /><br />' +
+            window.localStorage.setItem('result',
+                'We currently have ' +
+                resultMap[result].current_families + ' families with this profile' + '<br /><br />' +
                 'Tuition Assistance Award Range: ' + resultMap[result].estimated_award + '<br /><br />' +
                 'Estimated Tuition: ' + resultMap[result].estimated_tuition + '<br />' +
                 'And with a payment plan of: ' + resultMap[result].with_payment_plan + '<br />');
