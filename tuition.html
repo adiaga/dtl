@@ -218,9 +218,9 @@
                 10000000
             ];
 
-            var A3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Non - Jewish Private School';
-            var B3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Jewish Private School';
-            var C3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Public School';
+            var A3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Non - Jewish Private School' ? 'Yes' : 'No';
+            var B3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Jewish Private School' ? 'Yes' : 'No';
+            var C3 = $('[name="inputApplicantEnrolled"]:checked').val() === 'Public School' ? 'Yes' : 'No';
             var D3 = $('#inputTotalSchoolAgedKids').val();
             var E3 = $('#inputAGI').val();
             var F3 = $('#inputAssets').val();
@@ -356,11 +356,11 @@
             }
 
             window.localStorage.setItem('result',
-                'We currently have ' +
-                resultMap[result].current_families + ' families with this profile' + '<br /><br />' +
-                'Tuition Assistance Award Range: ' + resultMap[result].estimated_award + '<br /><br />' +
-                'Estimated Tuition: ' + resultMap[result].estimated_tuition + '<br />' +
-                'And with a payment plan of: ' + resultMap[result].with_payment_plan + '<br />');
+                '<p>We currently have ' +
+                resultMap[result].current_families + ' families with this profile' + '</p>' +
+                '<p>Tuition Assistance Award Range: ' + resultMap[result].estimated_award + '</p>' +
+                '<p>Estimated Tuition: ' + resultMap[result].estimated_tuition + '</p>' +
+                '<p style="font-size: 10px;">And with a payment plan of: ' + resultMap[result].with_payment_plan + '</p>');
             window.location.href = '/result.html';
             /*$('#result p.result').html(
 
