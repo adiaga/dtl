@@ -83,16 +83,16 @@
         <div id="part_1">
             <p>
 
-                We have created a tuition assistance award estimator to help you understand what your award may be for
+                We have created a Tuition Assistance Award Estimator to help you understand what your award may be for
                 your student.</p>
             <p>While a final determination can only be made after a review of your completed Tuition Assistance
-                application
+                Application
                 with tax returns, this tool will help to provide an estimate based solely on the parameters shared with
                 us
                 below.
             </p>
             <div class="control-group">
-                <label class="control-label">Is your student applicant currently enrolled in</label>
+                <label class="control-label">The student applicant is currently enrolled in</label>
                 <div class="controls controls1">
                     <input type="radio" id="inputApplicantEnrolled-NonJewishPrivateSchool" name="inputApplicantEnrolled"
                            value="Non - Jewish Private School" checked="checked"/> <label
@@ -110,9 +110,7 @@
 
 
             <div class="control-group">
-                <label class="control-label" for="inputTotalSchoolAgedKids">Number of children living at home for whom
-                    you
-                    will pay a tuition next fall (including the applicant), first grade through twelfth grade:</label>
+                <label class="control-label" for="inputTotalSchoolAgedKids">Number of children living at home for whom tuition will be paid next fall (including the applicant), TK/Kindergarten through twelfth grade:</label>
                 <div class="controls">
                     <select id="inputTotalSchoolAgedKids" required>
                         <option value="">Select Number</option>
@@ -157,12 +155,11 @@
                 <div class="controls">
                     <h3>Disclaimer</h3>
                     <p>
-                        The Tuition Assistance Award range estimated on the following screen is based on the basic
+                        The Tuition Assistance Award Range estimated on the following screen is based on the basic
                         parameters you’ve provided.</p>
-                    <p>A more thorough review and final determination will be made based on your completed Tuition
-                        Assistance application with tax returns.</p>
+                    <p>A more thorough review and final determination will be calculated after receiving your completed Tuition Assistance Application with tax returns.</p>
                     <p>
-                        This estimator is meant only to give you a rough sense of what your Tuition Assistance award may
+                        This estimator is meant only to give you a rough sense of what your Tuition Assistance Award may
                         be
                         per student.
                     </p>
@@ -357,10 +354,10 @@
 
             window.localStorage.setItem('result',
                 '<p>We currently have ' +
-                resultMap[result].current_families + ' families with this profile' + '</p>' +
+                resultMap[result].current_families + ' families with this profile.' + '</p>' +
                 '<p>Tuition Assistance Award Range: ' + resultMap[result].estimated_award + '</p>' +
                 '<p>Estimated Tuition: ' + resultMap[result].estimated_tuition + '</p>' +
-                '<p style="font-size: 12px;">And with a payment plan of: ' + resultMap[result].with_payment_plan + '</p>');
+                '<p style="font-size: 12px;">Or ' + resultMap[result].with_payment_plan + ' on a 12 pay plan</p>');
             window.location.href = '/dtl/result.html';
             /*$('#result p.result').html(
 
