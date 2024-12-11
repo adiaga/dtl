@@ -15,6 +15,13 @@
 
 
     <style>
+        .error {
+            position: absolute;
+            color: red;
+            background-color: #fff;
+            padding: 2px 2px;
+            transform: translate(0, 20px);
+        }
         #result {
             position: fixed;
             background-color: rgba(0, 0, 0, 0.5);
@@ -208,8 +215,10 @@
     jQuery(document).ready(function ($) {
         $('#btn_1').on('click', function (e) {
             e.preventDefault();
-            $('#part_1').hide();
-            $('#part_2').show();
+            if ($("#formTuition").valid()) {
+                $("#part_1").hide();
+                $("#part_2").show();
+            }
         });
         $('#formTuition').on('submit', function (e) {
             e.preventDefault();
